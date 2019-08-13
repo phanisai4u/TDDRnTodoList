@@ -5,18 +5,27 @@
 import 'react-native';
 import React from 'react';
 import App,{add} from '../App';
+import { shallow } from 'enzyme';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-it('renders correctly', () => {
-  renderer.create(<App />);
+const createTestProps = (props: object) => ({
+  ...props,
 });
 
-it('should add two numbers', () => {
-  expect(add(1, 1)).toEqual(2);
+describe('App', () => {
+  const props = createTestProps({});
+  const wrapper = shallow<App>(<App {...props} />);
+
+  describe('rendering', () => {
+
+    it('should render a <View />', () => {
+      expect(wrapper.find('View')).toHaveLength(1);
+    });
+
+    it('should add two numbers', () => {
+      expect(add(1, 1)).toEqual(2);
+    });
+    
+  });
 });
-
-
 
 

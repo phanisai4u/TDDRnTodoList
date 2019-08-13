@@ -4,7 +4,6 @@ import {
   View,
   Text,
 } from 'react-native';
-import { number } from 'prop-types';
 
 
 export const add = (a: number, b: number) => a + b;
